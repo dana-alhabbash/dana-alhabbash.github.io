@@ -3,6 +3,7 @@ body, html{
     margin: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
 }
 
 h1{
@@ -30,6 +31,10 @@ h3{
 p{
   font-family: sans-serif;
   font-weight: 400;
+  max-width: 60rem; 
+  line-height: 2em; 
+  margin: 0 auto;
+
 }
 
 
@@ -41,14 +46,27 @@ section p {
   margin-top: 0;
 }
 
-a{
+a {
   text-decoration: none;
-  color: black;
-  font-family: sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
+  color: #b71c1c; 
 }
 
+a:hover {
+  color: #e57373; 
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  background-color:#ffcdd2fa;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  color: #d32f2f;
+}
 
 header {
   display: flex;
@@ -57,9 +75,13 @@ header {
    padding: 0 1.25rem;
 }
 
+.logo-name{
+  width: 10rem;
+}
+
 /* Nav styling */
 .nav-container {
-    margin-top: 0rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -78,10 +100,32 @@ header {
   }
   
   .nav-link:hover {
-    color: rgba(3, 93, 93, 0.7);
+    color: red;
   }
   
   .nav-link.active {
     font-weight: bold;
-    color: #035D5D;
+    color: red;
   }
+
+  /* Cards */
+.card {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 12rem;
+  height: 12rem;
+  margin-bottom: 20px;
+}
