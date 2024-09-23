@@ -4,7 +4,7 @@
   <head>
 
     <meta charset="utf-8">
-    <title>Dana Alhabbash</title>
+    <title>Visualizations</title>
 
     <link href="css/style.css" rel="stylesheet">
   </head>
@@ -22,8 +22,51 @@
       
           </nav>
         </header>
+
+        <h1>Visualizations</h1>
        
+        <div class="border">
+          <h2 class="chart-title">Frequency of Activities Done Per Week</h2>
+          <div class="svg-container">
+              <svg width="400" height="200">
+                  <!-- X-Axis -->
+                  <line x1="50" y1="150" x2="350" y2="150" stroke="black" />
+                  <!-- Y-Axis -->
+                  <line x1="50" y1="20" x2="50" y2="150" stroke="black" />
+  
+                  <!-- Bars -->
+                  <rect x="60" y="30" width="40" height="120" fill="black" />
+                  <rect x="120" y="90" width="40" height="60" fill="black" />
+                  <rect x="180" y="120" width="40" height="30" fill="black" />
+                  <rect x="240" y="75" width="40" height="75" fill="black" />
+  
+                  <!-- Labels -->
+                  <text x="65" y="170" font-size="12">Skincare</text>
+                  <text x="125" y="170" font-size="12">Go to Gym</text>
+                  <text x="185" y="170" font-size="12">Takeout</text>
+                  <text x="245" y="170" font-size="12">Wash Hair</text>
+  
+                  <!-- Frequency Labels -->
+                  <text x="30" y="150" font-size="12">1</text>
+                  <text x="30" y="130" font-size="12">2</text>
+                  <text x="30" y="110" font-size="12">3</text>
+                  <text x="30" y="90" font-size="12">4</text>
+                  <text x="30" y="70" font-size="12">5</text>
+                  <text x="30" y="50" font-size="12">6</text>
+                  <text x="30" y="30" font-size="12">7</text>
+              </svg>
+          </div>
       </div>
+
+    <div class="svg-art">
+      <svg width="300" height="200">
+          <rect x="0" y="0" width="300" height="66" fill="black" />
+          <rect x="0" y="66" width="300" height="66" fill="white" />
+          <rect x="0" y="132" width="300" height="66" fill="green" />
+          <polygon points="0,0 100,100 0,200" fill="red" />
+      </svg>
+      <p class="art-title">Palestinian Flag</p>
+  </div>
   
     </body>
     </html>
