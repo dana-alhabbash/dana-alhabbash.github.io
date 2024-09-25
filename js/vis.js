@@ -15,6 +15,7 @@ function animateFlag() {
             growing = true;
         }
     }
+    //here I used AI to set the attributes because it wasnt working like how i wanted
     triangle.setAttribute("points", `0,0 ${size},100 0,200`);
 }
 setInterval(animateFlag, 100);
