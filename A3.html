@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <title>Home - Dana Alhabbash</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script>
+        
+        const options = {
+           config: {
+             // Vega-Lite default configuration
+           },
+           init: (view) => {
+             // initialize tooltip handler
+             view.tooltip(new vegaTooltip.Handler().call);
+           },
+           view: {
+             // view constructor options
+             // remove the loader if you don't want to default to vega-datasets!
+             loader: vega.loader({
+               baseURL: "https://cdn.jsdelivr.net/npm/vega-datasets@2/",
+             }),
+             renderer: "canvas",
+           },
+         };
+   
+         // register vega and vega-lite with the API
+         vl.register(vega, vegaLite, options);
+         </script>
+
+    
+  </head>
+
+  <body>
+
+    <header>
+      <a href="index.html">
+        <img src="img/dana.png" alt="Name" class="logo-name">
+      </a>
+
+        <nav>
+          <div class="nav-container">
+         <a href="visualization.html" class="nav-link">Assignment2</a>
+         <a href="A3.html" class="nav-link active">Assignment3</a>
+      </div>
+        </nav>
+
+      </header>
+      <h1>Assignment 3</h1>
+
+        <!-- Global Sales by Genre and Platform -->
+    <section class="A3-border">
+        <h2>Global Sales by Genre and Platform</h2>
+        <div id="chart1"></div>
+      </section>
+  
+      <!--Sales Over Time by Platform and Genre -->
+      <section class="A3-border">
+        <h2>Sales Over Time by Platform and Genre</h2>
+        <div id="chart2"></div>
+      </section>
+  
+      <!-- Regional Sales vs. Platform -->
+      <section class="A3-border">
+        <h2>Regional Sales vs. Platform</h2>
+        <div id="chart3"></div>
+      </section>
+  
+      <!-- Custom Story Visualization -->
+      <section class="A3-border">
+        <h2>Custom Story Visualization</h2>
+        <div id="chart4"></div>
+      </section>
+  
+      
+      <script type="module" src="js/vis.js"></script>
+  
+
+ 
+    </body>
+    </html>
