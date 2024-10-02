@@ -27,44 +27,110 @@ async function render() {
     const data = await d3.csv("dataset/videogames_wide.csv"); 
     
   
-    // Visualization 1: Global Sales by Genre and Platform
-    const vlSpec1 = vl
-      .markBar()
-      .data(data)
-      .encode(
-        vl.y().fieldN("Platform").sort("-x"),
-        vl.x().fieldQ("Global_Sales").aggregate("sum"),
-        vl.color().fieldN("Genre"),
-      )
-      .width("container") 
-      .height(400)
-      .toSpec();
+// Visualization 1: Global Sales by Genre and Platform
+
+//Genre
+const vlSpec1 = vl
+.markBar({ color: 'purple' })
+.data(data)
+.encode(
+  vl.y().fieldN("Genre"),
+  vl.x().fieldQ("Global_Sales").aggregate("sum"),
+  vl.tooltip().fieldN("Name")
+)
+.width(400)
+.height(400)
+.toSpec();
+
+//Platform
+const vlSpec2 = vl
+.markBar({ color: 'red' })
+.data(data)
+.encode(
+  vl.x().fieldQ('Global_Sales').aggregate('sum'),
+  vl.y().fieldN('Platform').sort('-x'),
+  vl.tooltip().fieldN('Platform')
+)
+.width(400)
+.height(400)
+.toSpec();
+
+const combinedSpec = vl.hconcat(vlSpec1, vlSpec2).toSpec();
+
+vegaEmbed("#combinedChart", combinedSpec).then((result) => {
+const view = result.view;
+view.run();
+});
+
   
-    vegaEmbed("#chart1", vlSpec1).then((result) => {
-        const view = result.view;
-        view.run();
-    });
+//Visualization 2: Sales Over Time by Platform and Genre
+// Genre
+const vlSpec3 = vl
+.markArea()
+  .data(data)
+  .transform(
+    vl.filter("datum.Year != 'N/A'"),
+    vl.filter("datum.Year != 'Misc'")
+  )
+  .encode(
+    vl.x().fieldN('Year'),
+    vl.y().fieldQ('Global_Sales').aggregate('sum'),
+    vl.color().fieldN('Genre').scale({scheme: 'tableau10'}),
+    vl.tooltip().fieldN('Genre')
+  )
+  .width(400)
+  .height(400)
+  .toSpec();
+
+  vegaEmbed("#chart3", vlSpec3).then((result) => {
+    const view = result.view;
+    view.run();
+  });
+
+const vlSpec4 = vl
+.markArea()
+  .data(data)
+  .transform(
+    vl.filter("datum.Year != 'N/A'"),
+    vl.filter("datum.Year != 'Misc'")
+  )
+  .encode(
+    vl.x().fieldN('Year'),
+    vl.y().fieldQ('Global_Sales').aggregate('sum'),
+    vl.color().fieldN('Platform').scale({scheme: 'spectral'}),
+    vl.tooltip().fieldN('Platform')
+  )
+  .width(400)
+  .height(400)
+  .toSpec();
+
+  vegaEmbed("#chart4", vlSpec4).then((result) => {
+    const view = result.view;
+    view.run();
+  });
+
+// Visualization 3: Regional Sales vs. Platform
+const vlSpec5 = vl
+  .markBar({ color: 'green' })
+  .data(data)
+  .encode(
+    vl.x().fieldQ({repeat: "repeat"}).aggregate('sum'), 
+    vl.y().fieldN('Platform').sort('-x'),
+   )
   
-    // Visualization 2: Sales Over Time by Platform and Genre
-    const vlSpec2 = vl
-      .markBar()
-      .data(data)
-      .encode(
-        vl.x().fieldT("Year"),
-        vl.y().fieldQ("Global_Sales").aggregate("sum"),
-        vl.color().fieldN("Platform"),
-        vl.detail().fieldN("Genre")
-      )
-      .width("container")
-      .height(400)
-      .toSpec();
-  
-    vegaEmbed("#chart2", vlSpec2).then((result) => {
-        const view = result.view;
-        view.run();
-    });
-  
-    // Visualization 3: Regional Sales vs. Platform
+  .width(480)
+  .height(400)
+  .repeat( ["NA_Sales", "EU_Sales", "JP_Sales", "Other_Sales"])
+  .columns(2)
+  .toSpec();
+
+vegaEmbed("#chart5", vlSpec5).then((result) => {
+  const view = result.view;
+  view.run();
+});
+
+
+
     // Visualization 4: Custom Story Visualization
     
   
