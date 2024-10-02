@@ -42,6 +42,11 @@ const vlSpec1 = vl
 .height(400)
 .toSpec();
 
+vegaEmbed("#chart1", vlSpec1).then((result) => {
+  const view = result.view;
+  view.run();
+});
+
 //Platform
 const vlSpec2 = vl
 .markBar({ color: 'green' })
@@ -55,12 +60,9 @@ const vlSpec2 = vl
 .height(400)
 .toSpec();
 
-//Used AI to learn this.
-const combinedSpec = vl.hconcat(vlSpec1, vlSpec2).toSpec();
-
-vegaEmbed("#combinedChart", combinedSpec).then((result) => {
-const view = result.view;
-view.run();
+vegaEmbed("#chart2", vlSpec2).then((result) => {
+  const view = result.view;
+  view.run();
 });
 
   

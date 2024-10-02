@@ -165,7 +165,7 @@ header {
   margin: auto;
 }
 
-#chart3, #chart4 {
+#chart1, #chart2, #chart3, #chart4 {
   width: 45%; 
   height: 45%;
   display: inline-block;
