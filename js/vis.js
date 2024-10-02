@@ -55,6 +55,7 @@ const vlSpec2 = vl
 .height(400)
 .toSpec();
 
+//Used AI to learn this.
 const combinedSpec = vl.hconcat(vlSpec1, vlSpec2).toSpec();
 
 vegaEmbed("#combinedChart", combinedSpec).then((result) => {
