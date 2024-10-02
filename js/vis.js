@@ -34,9 +34,8 @@ const vlSpec1 = vl
 .markBar({ color: 'purple' })
 .data(data)
 .encode(
-  vl.y().fieldN("Genre"),
+  vl.y().fieldN('Genre'),
   vl.x().fieldQ("Global_Sales").aggregate("sum"),
-  vl.tooltip().fieldN("Name")
 )
 .width(400)
 .height(400)
@@ -54,7 +53,6 @@ const vlSpec2 = vl
 .encode(
   vl.x().fieldQ('Global_Sales').aggregate('sum'),
   vl.y().fieldN('Platform').sort('-x'),
-  vl.tooltip().fieldN('Platform')
 )
 .width(400)
 .height(400)
