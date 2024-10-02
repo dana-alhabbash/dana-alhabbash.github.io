@@ -44,7 +44,7 @@ const vlSpec1 = vl
 
 //Platform
 const vlSpec2 = vl
-.markBar({ color: 'red' })
+.markBar({ color: 'green' })
 .data(data)
 .encode(
   vl.x().fieldQ('Global_Sales').aggregate('sum'),
@@ -111,7 +111,7 @@ const vlSpec4 = vl
 
 // Visualization 3: Regional Sales vs. Platform
 const vlSpec5 = vl
-  .markBar({ color: 'green' })
+  .markBar({ color: 'blue' })
   .data(data)
   .encode(
     vl.x().fieldQ({repeat: "repeat"}).aggregate('sum'), 
@@ -129,11 +129,37 @@ vegaEmbed("#chart5", vlSpec5).then((result) => {
   view.run();
 });
 
-
-
-    // Visualization 4: Custom Story Visualization
-    
+// Visualization 4: Custom Story Visualization
+const vlSpec6 = vl
+  .markBar({ color: 'orange' })
+  .data(data)
+  //Used AI too aggregate because it wasn't working
+  .transform([
+    {
+      aggregate: [
+        { op: 'distinct', field: 'Platform', as: 'Total_Platforms' }
+      ],
+      groupby: ['Publisher']
+    },
+    {
+      filter: 'datum.Total_Platforms > 10'
+    }
+  ])
+  .encode(
+    vl.x().fieldQ('Total_Platforms').title('Total Number of Platforms'),
+    vl.y().fieldN('Publisher').sort('-x'),
+    vl.tooltip([
+      { field: 'Total_Platforms', title: 'Number of Platforms' }
+    ])
+  )
+  .width(600)
+  .height(600)
+  .toSpec();
   
+  vegaEmbed("#chart6", vlSpec6).then((result) => {
+    const view = result.view;
+    view.run();
+  });
    
   }
   
